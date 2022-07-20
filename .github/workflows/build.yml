@@ -10,9 +10,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        working-directory: ./server
-        uses: actions/checkout@v3
-        
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Install dependencies
         working-directory: ./server
         uses: bahmutov/npm-install@v1
