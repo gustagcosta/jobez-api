@@ -1,21 +1,8 @@
 import { Candidate } from '../entities/candidate';
-import { Company } from '../entities/company';
 import { Resume } from '../entities/resume';
 import { User } from '../entities/user';
 import { CreateResume } from './create-resume';
-import { ResumeRepository } from './repositories/resume-repository';
-
-class InMemoryResumeRepository implements ResumeRepository {
-  public resumes: Resume[];
-
-  constructor() {
-    this.resumes = [];
-  }
-
-  async create(resume: Resume): Promise<void> {
-    this.resumes.push(resume);
-  }
-}
+import { InMemoryResumeRepository } from './shared/in-memory-resume-repository';
 
 const generateResume = () => {
   return new Resume({

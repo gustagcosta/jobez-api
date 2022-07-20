@@ -1,6 +1,6 @@
 import { Candidate } from '../entities/candidate';
 import { User } from '../entities/user';
-import { CreateCandidate } from './create-candidate';
+import { GetCandidate } from './get-candidate';
 import { InMemoryCandidateRepository } from './shared/in-memory-candidate-repository';
 
 const candidate = new Candidate({
@@ -16,10 +16,13 @@ const candidate = new Candidate({
 describe('test create candidate use case', () => {
   test('show execute a regular create candidate use case', async () => {
     const candidateRepository = new InMemoryCandidateRepository();
-    const createCandidateUseCase = new CreateCandidate(candidateRepository);
 
-    await createCandidateUseCase.execute(candidate);
+    const getCandidate = new GetCandidate(candidateRepository);
 
-    expect(candidateRepository.candidates).toHaveLength(1);
+    await candidateRepository.create(candidate);
+
+    const candidateFinded = await getCandidate.execute(candidate.id as string);
+
+    expect(candidateFinded.id).toBe(candidate.id);
   });
 });

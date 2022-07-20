@@ -1,6 +1,6 @@
 import { Company } from '../entities/company';
 import { User } from '../entities/user';
-import { CreateCompany } from './create-company';
+import { GetCompany } from './get-company';
 import { InMemoryCompanyRepository } from './shared/in-memory-company-repository';
 
 const company = new Company({
@@ -15,10 +15,13 @@ const company = new Company({
 describe('test create company use case', () => {
   test('show execute a regular create company use case', async () => {
     const companyRepository = new InMemoryCompanyRepository();
-    const createCompany = new CreateCompany(companyRepository);
 
-    await createCompany.execute(company);
+    const getCompany = new GetCompany(companyRepository);
 
-    expect(companyRepository.companies).toHaveLength(1);
+    await companyRepository.create(company);
+
+    const companyFinded = await getCompany.execute(company.id as string);
+
+    expect(companyFinded.id).toBe(company.id);
   });
 });

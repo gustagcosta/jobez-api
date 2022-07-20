@@ -2,19 +2,7 @@ import { Company } from '../entities/company';
 import { Job, JobStatus } from '../entities/job';
 import { User } from '../entities/user';
 import { CreateJob } from './create-job';
-import { JobRepository } from './repositories/job-repository';
-
-class InMemoryJobRepository implements JobRepository {
-  public jobs: Job[];
-
-  constructor() {
-    this.jobs = [];
-  }
-
-  async create(job: Job): Promise<void> {
-    this.jobs.push(job);
-  }
-}
+import { InMemoryJobRepository } from './shared/in-memory-job-repository';
 
 const generateJob = () => {
   return new Job({
