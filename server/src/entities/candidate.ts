@@ -13,7 +13,7 @@ export class Candidate extends BaseEntity {
   public user: User;
   public cpf: string;
   public date_birth: Date;
-  public resumes?: Resume[];
+  public resumes: Resume[];
 
   constructor(props: CandidateProps, id?: string) {
     super(id);

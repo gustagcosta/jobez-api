@@ -12,5 +12,5 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true
   },
-  "exclude": ["node_modules", "src/**/**/*.spec.ts", "jest.config.ts", "build"]
+  "exclude": ["node_modules", "src/**/**/*.spec.ts", "jest.config.ts", "build", "coverage"]
 }

@@ -31,7 +31,7 @@ describe('test candidate entity', () => {
   });
 
   test('should throw a cpf error', () => {
-    props.date_birth = new Date();
+    props.date_birth = new Date(2022, 31, 2);
 
     expect(() => new Candidate(props)).toThrowError(
       new Error('invalid date birth')

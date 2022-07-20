@@ -5,7 +5,7 @@ import { User } from './user';
 export type CompanyProps = {
   user: User;
   cnpj: string;
-  jobs: Job[];
+  jobs?: Job[];
 };
 
 export class Company extends BaseEntity {
