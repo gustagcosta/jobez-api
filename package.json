@@ -6,7 +6,7 @@
     "dev": "nodemon src/infra/server.ts",
     "build": "tsc --build",
     "start": "node build/infra/server.js",
-    "test:endtoend": "jest --detectOpenHandles --testPathPattern=tests/end-to-end",
+    "test": "jest --detectOpenHandles",
     "test:unit": "jest --detectOpenHandles --testPathIgnorePatterns=tests",
     "test:coverage": "jest --detectOpenHandles --coverage"
   },
