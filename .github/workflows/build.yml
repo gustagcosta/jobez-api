@@ -10,14 +10,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
-        working-directory: ./server
 
       - name: Run Jest
-        working-directory: ./server
         run: npm run test:unit
