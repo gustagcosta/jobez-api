@@ -1,13 +1,11 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import { CreateCandidateAdapter } from '../adapters/create-candidate-adapter';
-import { CreateCandidate } from '../use-cases/create-candidate';
-import { InMemoryCandidateRepository } from '../use-cases/shared/in-memory-candidate-repository';
-import { CandidateController } from './controllers/candidate-controller';
+import { Router, Request, Response } from 'express';
+import { CreateCandidateController } from './controllers/create-candidate-controller';
+import { CreateCompanyController } from './controllers/create-company-controller';
 
 const routes = Router();
 
 routes.get('/', (req: Request, res: Response) => res.json({ ok: true }));
-
-routes.post('/candidate', CandidateController.post);
+routes.post('/candidate', CreateCandidateController.execute);
+routes.post('/company', CreateCompanyController.execute);
 
 export { routes };

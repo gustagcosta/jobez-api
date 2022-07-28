@@ -10,11 +10,12 @@ app.use(express.json());
 
 app.use(routes);
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+  console.error({ error });
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode).json({
-    message: err.message,
-    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    message: error.message,
+    stack: process.env.NODE_ENV === 'production' ? null : error.stack,
   });
 });
 
